@@ -3,7 +3,7 @@ name = "llm"
 authors = [
   { name="Caspar Nettelbladt", email="caspar.n@gmail.com" },
 ]
-version = "0.1.0"
+version = "0.1.1"
 description = "A python package for interacting with the OpenAI API"
 readme = "README.md"
 dependencies=[
@@ -14,10 +14,8 @@ dependencies=[
 ]
 package = "llm"
 
-[tool.hatch.build]
-include = [
-  "llm/**"
-]
+[tool.hatch.build.targets.wheel]
+packages = ["llm"]
 
 [build-system]
 requires = ["hatchling"]
