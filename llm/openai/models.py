@@ -174,7 +174,7 @@ class ChatRequest:
 
 
 @dataclasses.dataclass
-class ChatCompletionResponse:
+class ChatResponse:
     """
     Response from the OpenAI API for a chat completion request.
     """

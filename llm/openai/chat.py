@@ -1,9 +1,9 @@
 import openai
 
-from .models import ChatCompletionResponse, ChatRequest
+from .models import ChatRequest, ChatResponse
 
 
-def chat_completion(request: ChatRequest) -> ChatCompletionResponse:
+def chat_completion(request: ChatRequest) -> ChatResponse:
     messages: list[dict] = [
         {
             "role": message.role,
@@ -18,4 +18,4 @@ def chat_completion(request: ChatRequest) -> ChatCompletionResponse:
         temperature=request.temperature,
     )
 
-    return ChatCompletionResponse(**response)
+    return ChatResponse(**response)
