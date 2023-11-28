@@ -8,9 +8,6 @@ description = "A python package for interacting with the OpenAI API"
 readme = "README.md"
 dependencies=[
   "openai",
-  "requests",
-  "pygments",
-  "click",
 ]
 package = "llm"
 
