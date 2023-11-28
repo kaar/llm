@@ -12,10 +12,11 @@ dependencies=[
   "pygments",
   "click",
 ]
-package = "llm"
+# package = "llm"
 
 [tool.hatch.build.targets.wheel]
 packages = ["llm"]
+
 
 [build-system]
 requires = ["hatchling"]
