@@ -1,7 +1,8 @@
-from .openai.chat import chat_completion
-from .openai.models import AssistantMessage, ChatRequest, ChatResponse, Message, SystemMessage, UserMessage
+from .models import AssistantMessage, ChatRequest, ChatResponse, Message, Models, SystemMessage, UserMessage
+from .openai import chat_completion
 
 __all__ = [
+    "Models",
     "Message",
     "UserMessage",
     "AssistantMessage",
