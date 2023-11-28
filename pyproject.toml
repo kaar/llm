@@ -1,0 +1,57 @@
+[project]
+name = "llm"
+authors = [
+  { name="Caspar Nettelbladt", email="caspar.n@gmail.com" },
+]
+version = "0.0.1"
+description = "A python package for interacting with the OpenAI API"
+readme = "README.md"
+dependencies=[
+  "openai",
+  "requests",
+  "pygments",
+  "click",
+]
+package = "llm"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+ag = "llm.cli:cli"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest]
+addopts = [
+    "--cov=ci",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+    "--cov-fail-under=100",
+    "--cov-branch",
+    "--cov-context=test",
+]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
