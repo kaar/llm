@@ -1,6 +1,8 @@
-import openai
+from openai import OpenAI
 
 from .models import ChatRequest, ChatResponse
+
+client = OpenAI()
 
 
 def chat_completion(request: ChatRequest) -> ChatResponse:
@@ -12,7 +14,7 @@ def chat_completion(request: ChatRequest) -> ChatResponse:
         for message in request.messages
     ]
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create.create(
         model=request.model,
         messages=messages,
         temperature=request.temperature,
