@@ -11,6 +11,8 @@ class Models:
 
     DEFAULT_MODEL = GPT_4_TURBO
 
+    ALL_MODELS = [GPT_3_5_TURBO, GPT_4, GPT_4_TURBO]
+
 
 @dataclasses.dataclass
 class Message:
