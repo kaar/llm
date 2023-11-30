@@ -14,7 +14,7 @@ def chat_completion(request: ChatRequest) -> ChatResponse:
         for message in request.messages
     ]
 
-    response = client.chat.completions.create.create(
+    response = client.chat.completions.create(
         model=request.model,
         messages=messages,
         temperature=request.temperature,
