@@ -1,12 +1,13 @@
-__version__ = "0.1.5"
-
-from .openai.models import AssistantMessage, ChatRequest, ChatResponse, Message, SystemMessage, UserMessage
+from .models import AssistantMessage, ChatRequest, ChatResponse, Message, Models, SystemMessage, UserMessage
+from .openai import chat_completion
 
 __all__ = [
+    "Models",
     "Message",
     "UserMessage",
     "AssistantMessage",
     "SystemMessage",
     "ChatRequest",
     "ChatResponse",
+    "chat_completion",
 ]
