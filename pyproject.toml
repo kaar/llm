@@ -1,19 +1,20 @@
-[project]
-name = "llm"
-authors = [
-  { name="Caspar Nettelbladt", email="caspar.n@gmail.com" },
-]
-version = "0.1.3"
+[tool.poetry]
+name = "python-scripts"
+version = "0.1.4"
 description = "A python package for interacting with the OpenAI API"
+authors = ["Caspar Nettelbladt <caspar.n@gmail.com>"]
 readme = "README.md"
-dependencies=[
-  "openai",
+packages = [
+  { include = ".", from = "llm" },
 ]
-package = "llm"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+openai = "^1.3.6"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 120
