@@ -16,19 +16,13 @@ class Models:
 
 @dataclasses.dataclass
 class Message:
-    """
-    A chat message sent to or received from the OpenAI API.
-    """
+    """A chat message sent to or received from the OpenAI API."""
 
     content: str
-    """
-    The content of the message.
-    """
+    """The content of the message."""
 
     role: str
-    """
-    The role of the message. Either "user" or "assistant".
-    """
+    """The role of the message. Either "user" or "assistant"."""
 
 
 @dataclasses.dataclass
@@ -210,7 +204,11 @@ class ChatResponse:
             self.created = datetime.datetime.fromtimestamp(self.created)
 
         if isinstance(self.choices, list):
-            self.choices = [self.Choices(**choice) for choice in self.choices if isinstance(choice, dict)]
+            self.choices = [
+                self.Choices(**choice)
+                for choice in self.choices
+                if isinstance(choice, dict)
+            ]
 
         if isinstance(self.usage, dict):
             self.usage = self.Usage(**self.usage)
