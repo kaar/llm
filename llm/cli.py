@@ -3,6 +3,9 @@ import logging
 import os
 import sys
 
+from . import openai
+from .models import ChatRequest, Message, SystemMessage, UserMessage
+
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "DEBUG").upper()
 logging.basicConfig(
     stream=sys.stdout,
@@ -26,9 +29,14 @@ def main():
         "--instructions",
         "-i",
         type=str,
-        help="GPT system instruction",
+        help="Instructions to be included in the prompt",
     )
-    parser.add_argument("--message", "-m", type=str, help="Send message")
+    parser.add_argument(
+        "--message",
+        "-m",
+        type=str,
+        help="Message to be included in the request",
+    )
     args = parser.parse_args()
 
     if not args.file.isatty():
@@ -36,5 +44,20 @@ def main():
         with args.file as f:
             data = f.read()
             LOGGER.debug("Data: %s", data)
+            response = openai.chat_completion(
+                ChatRequest(
+                    model="gpt-4",
+                    messages=[
+                        SystemMessage(
+                            content="You are a helpful assistant.",
+                        ),
+                        UserMessage(
+                            content=data,
+                        ),
+                    ],
+                    temperature=0,
+                )
+            )
+            print(response.choices[0].message.content)
             # print(chat.send(f.read(), echo=True))
             return
